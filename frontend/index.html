@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Code Editor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">&lt;/&gt;</div>
+      <span class="brand-name">CodeRun</span>
+      <span class="brand-badge">Online Editor</span>
+    </div>
+
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="python" data-ext="py">Python</button>
+      <button class="lang-btn" data-lang="java" data-ext="java">Java</button>
+      <button class="lang-btn" data-lang="cpp" data-ext="cpp">C++</button>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="theme-btn" id="themeToggle">☀️</button>
+      <button class="run-btn" id="runBtn">▶ Run</button>
+    </div>
+  </header>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- EDITOR PANEL -->
+    <section class="editor-panel">
+      <div class="panel-toolbar">
+        <span class="file-name" id="fileName">📄 main.py</span>
+        <span class="line-count" id="lineCount">1 line</span>
+        <div class="panel-actions">
+          <button class="small-btn" id="clearBtn">Clear</button>
+          <span class="shortcut-hint">Ctrl+Enter to run</span>
+        </div>
+      </div>
+
+      <div class="editor-wrap">
+        <div class="line-numbers" id="lineNumbers">1</div>
+        <textarea
+          id="codeEditor"
+          class="code-editor"
+          spellcheck="false"
+          autocorrect="off"
+          autocapitalize="off"
+          placeholder='print("Hello, World!")'
+        ></textarea>
+      </div>
+    </section>
+
+    <!-- OUTPUT PANEL -->
+    <section class="output-panel">
+      <div class="panel-toolbar">
+        <div class="output-tabs">
+          <button class="tab-btn active" data-tab="output">output</button>
+          <button class="tab-btn" data-tab="info">info</button>
+        </div>
+        <button class="small-btn" id="clearOutputBtn">Clear</button>
+      </div>
+
+      <!-- Output tab -->
+      <div class="tab-content active" id="tab-output">
+        <div class="output-placeholder" id="outputPlaceholder">
+          <div class="placeholder-icon">▶</div>
+          <p>Click Run or press Ctrl+Enter</p>
+          <small>Output will appear here</small>
+        </div>
+        <div class="output-running hidden" id="outputRunning">
+          <div class="spinner">⟳</div>
+          <p id="runningLang">Executing Python code...</p>
+        </div>
+        <div class="output-result hidden" id="outputResult">
+          <div class="result-header">
+            <span class="result-badge" id="resultBadge"></span>
+            <span class="result-time" id="resultTime"></span>
+          </div>
+          <pre class="result-text" id="resultText"></pre>
+        </div>
+      </div>
+
+      <!-- Info tab -->
+      <div class="tab-content" id="tab-info">
+        <div class="info-section">
+          <div class="info-label">Project</div>
+          <div class="info-value">Online Code Editor</div>
+          <div class="info-sub">Code Execution Module</div>
+        </div>
+        <div class="info-section">
+          <div class="info-label">Status</div>
+          <div class="status-dot green">● Frontend running</div>
+          <div class="status-dot red">● Backend not connected</div>
+        </div>
+        <div class="info-section">
+          <div class="info-label">Shortcuts</div>
+          <div class="shortcut-row"><kbd>Ctrl+Enter</kbd><span>Run code</span></div>
+          <div class="shortcut-row"><kbd>Tab</kbd><span>Indent</span></div>
+          <div class="shortcut-row"><kbd>Ctrl+/</kbd><span>Comment</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── STATUS BAR ── -->
+  <footer class="statusbar">
+    <span>CodeRun v1.0</span>
+    <span id="statusLang">Lang: Python</span>
+    <span id="statusLines">Lines: 1</span>
+    <span class="statusbar-right" id="statusResult">Ready</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
